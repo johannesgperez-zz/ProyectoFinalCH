@@ -1,0 +1,15 @@
+{% extends 'Base/home.html' %}
+
+{% block content %}
+
+{% for bajo in bajos %}
+
+<ul>
+    <li>{{bajo.titulo}}</li>
+</ul>
+
+
+
+{% endfor %}
+
+{% endblock %}

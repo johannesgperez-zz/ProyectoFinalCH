@@ -1,0 +1,15 @@
+{% extends 'Base/home.html' %}
+
+{% block content %}
+
+{% for guitarra in guitarras %}
+
+<ul>
+    <li>{{guitarra.titulo}}</li>
+</ul>
+
+
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'Base/home.html' %}
+
+{% block content %}
+
+{% for pedal in pedales %}
+
+<ul>
+    <li>{{pedal.titulo}}</li>
+</ul>
+
+
+
+{% endfor %}
+
+{% endblock %}

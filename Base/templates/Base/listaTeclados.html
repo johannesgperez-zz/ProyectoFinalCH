@@ -1,0 +1,15 @@
+{% extends 'Base/home.html' %}
+
+{% block content %}
+
+{% for teclado in teclados %}
+
+<ul>
+    <li>{{teclado.titulo}}</li>
+</ul>
+
+
+
+{% endfor %}
+
+{% endblock %}

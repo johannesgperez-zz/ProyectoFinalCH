@@ -1,0 +1,15 @@
+{% extends 'Base/home.html' %}
+
+{% block content %}
+
+{% for amplificador in amplificadores %}
+
+<ul>
+    <li>{{amplificador.titulo}}</li>
+</ul>
+
+
+
+{% endfor %}
+
+{% endblock %}

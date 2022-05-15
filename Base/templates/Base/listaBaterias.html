@@ -1,0 +1,15 @@
+{% extends 'Base/home.html' %}
+
+{% block content %}
+
+{% for bateria in baterias %}
+
+<ul>
+    <li>{{bateria.titulo}}</li>
+</ul>
+
+
+
+{% endfor %}
+
+{% endblock %}
