@@ -2,10 +2,15 @@
 
 {% block content %}
 
+<h1>Baterias</h1>
+
 {% for bateria in baterias %}
 
 <ul>
     <li>{{bateria.titulo}}</li>
+    <a href="{% url 'bateria' bateria.id %}">Ver</a>
+    <a href="{% url 'bateria_editar' bateria.id %}">Editar</a>
+    <a href="{% url 'bateria_eliminar' bateria.id %}">Eliminar</a>
 </ul>
 
 

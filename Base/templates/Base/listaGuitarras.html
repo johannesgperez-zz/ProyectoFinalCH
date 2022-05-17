@@ -2,11 +2,17 @@
 
 {% block content %}
 
+<h1>Guitarras</h1>
+
 {% for guitarra in guitarras %}
 
 <ul>
     <li>{{guitarra.titulo}}</li>
+    <a href="{% url 'guitarra' guitarra.id %}">Ver</a>
+    <a href="{% url 'guitarra_editar' guitarra.id %}">Editar</a>
+    <a href="{% url 'guitarra_eliminar' guitarra.id %}">Eliminar</a>
 </ul>
+
 
 
 

@@ -2,10 +2,15 @@
 
 {% block content %}
 
+<h1>Bajos</h1>
+
 {% for bajo in bajos %}
 
 <ul>
     <li>{{bajo.titulo}}</li>
+    <a href="{% url 'bajo' bajo.id %}">Ver</a>
+    <a href="{% url 'bajo_editar' bajo.id %}">Editar</a>
+    <a href="{% url 'bajo_eliminar' bajo.id %}">Eliminar</a>
 </ul>
 
 

@@ -2,10 +2,15 @@
 
 {% block content %}
 
+<h1>Amplificadores</h1>
+
 {% for amplificador in amplificadores %}
 
 <ul>
     <li>{{amplificador.titulo}}</li>
+    <a href="{% url 'amplificador' amplificador.id %}">Ver</a>
+    <a href="{% url 'amplificador_editar' amplificador.id %}">Editar</a>
+    <a href="{% url 'amplificador_eliminar' amplificador.id %}">Eliminar</a>
 </ul>
 
 

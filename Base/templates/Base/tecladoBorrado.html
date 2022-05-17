@@ -1,0 +1,12 @@
+{% extends 'Base/home.html' %}
+
+{% block content %}
+
+<form method="post">{% csrf_token %}
+    Estás seguro que deseas borrar el teclado {{teclado.marca}} {{teclado.modelo}} ?
+    <p>
+    <input type="submit" value="Eliminar">
+    </p>
+</form>
+
+{% endblock %}
