@@ -2,7 +2,13 @@
 
 {% block content %}
 
+<div class="container">
+
 <h1>Pedales</h1>
+
+</div>
+
+<div class="container">
 
 {% for pedal in pedales %}
 
@@ -13,8 +19,8 @@
     <a href="{% url 'pedal_eliminar' pedal.id %}">Eliminar</a>
 </ul>
 
-
-
 {% endfor %}
+
+</div>
 
 {% endblock %}

@@ -2,7 +2,13 @@
 
 {% block content %}
 
+<div class="container">
+
 <h1>Teclados</h1>
+
+</div>
+
+<div class="container">
 
 {% for teclado in teclados %}
 
@@ -13,8 +19,8 @@
     <a href="{% url 'teclado_eliminar' teclado.id %}">Eliminar</a>
 </ul>
 
-
-
 {% endfor %}
+
+</div>
 
 {% endblock %}

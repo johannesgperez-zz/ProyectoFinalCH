@@ -2,11 +2,15 @@
 
 {% block content %}
 
+<div class="container">
+
 <form method="post">{% csrf_token %}
     Estás seguro que deseas borrar la guitarra {{guitarra.marca}} {{guitarra.modelo}} ?
     <p>
     <input type="submit" value="Eliminar">
     </p>
 </form>
+
+</div>
 
 {% endblock %}

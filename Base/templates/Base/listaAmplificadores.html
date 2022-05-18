@@ -2,7 +2,13 @@
 
 {% block content %}
 
+<div class="container">
+
 <h1>Amplificadores</h1>
+
+</div>
+
+<div class="container">
 
 {% for amplificador in amplificadores %}
 
@@ -13,8 +19,8 @@
     <a href="{% url 'amplificador_eliminar' amplificador.id %}">Eliminar</a>
 </ul>
 
-
-
 {% endfor %}
+
+</div>
 
 {% endblock %}
