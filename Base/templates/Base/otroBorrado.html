@@ -6,9 +6,9 @@
 <div class="container">
 
 <form method="post">{% csrf_token %}
-    Estás seguro que deseas borrar el artículo {{otro.marca}} {{otro.modelo}} ?
+    <h4>Estás seguro(a) que deseas borrar el artículo {{otro.marca}} {{otro.modelo}} ?</h4>
     <p>
-    <input type="submit" value="Eliminar">
+        <button type="submit" class="btn btn-danger">Eliminar</button>
     </p>
 </form>
 

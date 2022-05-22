@@ -22,7 +22,13 @@ class Instrumento(models.Model):
     fechaPublicacion = models.DateTimeField(auto_now_add=True)
     telefonoContacto = models.IntegerField()
     emailContacto = models.EmailField()
+    imagenInstrumento = models.ImageField(null=True, blank=True, upload_to="imagenes/")
 
     def __str__(self):
         return self.titulo
+
+class Avatar(models.Model):
+    imagenAvatar = models.ImageField(null=True, blank=True, upload_to="imagenes/")
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+
 

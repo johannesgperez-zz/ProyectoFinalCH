@@ -5,6 +5,9 @@
 <div class="container">
 
 <p><h4>{{bajo.titulo}}</h4></p>
+{% if bajo.imagenInstrumento %}
+    <p><img src="{{bajo.imagenInstrumento.url}}" alt=""></p>
+{% endif %}
 <p>Marca: {{bajo.marca}}</p>
 <p>Modelo: {{bajo.modelo}}</p>
 <p>Descripción: {{bajo.descripcion}}</p>

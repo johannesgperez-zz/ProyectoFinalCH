@@ -7,7 +7,7 @@
 <form method="post">{% csrf_token %}
     Estás seguro que deseas borrar el amplificador {{amplificador.marca}} {{amplificador.modelo}} ?
     <p>
-    <input type="submit" value="Eliminar">
+        <button type="submit" class="btn btn-danger">Eliminar</button>
     </p>
 </form>
 

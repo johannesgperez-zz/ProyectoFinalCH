@@ -37,33 +37,47 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'otros' %}">Otros</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'acerca_de_mi' %}">Acerca del Autor</a>
+              </li>
+            </ul>
+            {% if request.user.is_authenticated %}
+            <ul>
+              <li>
+                <p style="color: white"> Hola {{request.user.first_name}}!</p>
+              </li>
+              <li>
+                <a href="{% url 'editar_perfil' %}">Editar Perfil</a>
+              </li>
+              <li>
+                <a href="{% url 'logout' %}">Cerrar Sesión</a>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <img class="rounded-circle" src="{{request.user.avatar.imagenAvatar.url}}" width=100 height=100 alt="">
+              </li>
+            </ul>
+              {% else %}
+            <ul>
+              <li>
+                <a href="{% url 'login' %}">Iniciar Sesión</a>
+              </li>
+              <li>
+                <a href="{% url 'registro' %}">Registrate</a>
+              </li>
+            </ul>
+            {% endif %}
           </div>
         </div>
-        <div class="container">
-          <ul>
-          {% if request.user.is_authenticated %}
-          <li>
-              <p style="color: aliceblue;">Hola! {{request.user}}!</p>
-          </li>
-          <li>
-            <a href="{% url 'editar_perfil' %}">Editar Perfil</a>
-          </li>
-          <li>
-              <a href="{% url 'logout' %}">Cerrar Sesión</a>
-          </li>
-          {% else %}
-          
-          <p><a href="{% url 'login' %}">Iniciar Sesión</a></p>
-          <p><a href="{% url 'registro' %}">Registrate</a></p>
-          
-          {% endif %}
-          </ul>
-          </div>
+        
       </nav>
-
       {% block content %}
-      
 
+      <div class="container text-center">
+        <h2>Bienvenido(a) a la Venta y Permuta de Instrumentos Musicales!</h2>
+      </div>
+      
       <div class="container">
         <p>Quieres vender o permutar tu instrumento musical?</p>
         <p><a href="{% url 'nuevo' %}">Agregalo acá:</a></p>

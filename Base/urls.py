@@ -1,12 +1,13 @@
 from django import views
 from django.urls import path
-from .views import GuitarraDelete, InstrumentoCreacion, GuitarraDetalle, AmplificadorLista, TecladoLista, BateriaLista, BajoLista, GuitarraLista, HomeView, PedalLista, OtroLista, BajoDetalle, PedalDetalle, AmplificadorDetalle, TecladoDetalle, BateriaDetalle, OtroDetalle, GuitarraUpdate, BajoUpdate, PedalUpdate, AmplificadorUpdate, TecladoUpdate, BateriaUpdate, OtroUpdate, BajoDelete, PedalDelete, AmplificadorDelete, TecladoDelete, BateriaDelete, OtroDelete, LoginPagina, RegistroPagina, UsuarioEdicion, CambioPassword
+from .views import GuitarraDelete, InstrumentoCreacion, GuitarraDetalle, AmplificadorLista, TecladoLista, BateriaLista, BajoLista, GuitarraLista, PedalLista, OtroLista, BajoDetalle, PedalDetalle, AmplificadorDetalle, TecladoDetalle, BateriaDetalle, OtroDetalle, GuitarraUpdate, BajoUpdate, PedalUpdate, AmplificadorUpdate, TecladoUpdate, BateriaUpdate, OtroUpdate, BajoDelete, PedalDelete, AmplificadorDelete, TecladoDelete, BateriaDelete, OtroDelete, LoginPagina, RegistroPagina, UsuarioEdicion, CambioPassword
 from django.contrib.auth.views import LogoutView
 from . import views
 
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
+    # path('', HomeView.as_view(), name='home'),
+    path('', views.inicio, name='home'),
 
     path('login/', LoginPagina.as_view(), name='login'),
     path('logout/', LogoutView.as_view(template_name='base/logout.html'), name='logout'),
@@ -49,4 +50,6 @@ urlpatterns = [
     path('otroBorrado/<int:pk>/', OtroDelete.as_view(), name='otro_eliminar'),
 
     path('instrumentoCreacion/', InstrumentoCreacion.as_view(), name='nuevo'),
+
+    path('acercaDeMi/', views.about, name='acerca_de_mi'),
 ]

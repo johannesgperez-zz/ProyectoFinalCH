@@ -7,12 +7,17 @@
 </div>
 
 <div class="container">
+    <div class="form-group">
     <form method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <input class="button" type="submit" value="Registrar">
+        <button type="submit" class="btn btn-secondary">Registar</button>
     </form>
+    </div>
+    <br>
+    <div class="container">
     <p>Ya tienes una cuenta? <a href="{% url 'login' %}">Iniciar Sesión</a></p>
+    </div>
 </div>
 
 {% endblock content %}

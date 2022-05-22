@@ -5,14 +5,21 @@ from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from .models import Instrumento
-from .forms import ActualizacionInstrumento, FormularioEdicion, FormularioNuevoInstrumento
+from .models import Instrumento, Avatar
+from .forms import ActualizacionInstrumento, FormularioEdicion, FormularioNuevoInstrumento, FormularioRegistroUsuario
 
 
-class HomeView(TemplateView):
-    template_name = 'Base/home.html'
+# class HomeView(LoginRequiredMixin, TemplateView):
+#     template_name = 'Base/home.html'
+
+@login_required
+def inicio(request):
+    avatares = Avatar.objects.filter(usuario=request.user.id)
+    imagenAvatar = avatares[0].imagenAvatar.url
+    return render(request, "base/home.html", {'url': imagenAvatar})
 
 class LoginPagina(LoginView):
     template_name = 'base/login.html'
@@ -25,7 +32,8 @@ class LoginPagina(LoginView):
 
 class RegistroPagina(FormView):
     template_name = 'base/registro.html'
-    form_class = UserCreationForm
+    #form_class = UserCreationForm
+    form_class = FormularioRegistroUsuario
     redirect_autheticated_user = True
     success_url = reverse_lazy('home')
 
@@ -72,9 +80,7 @@ class GuitarraDetalle(LoginRequiredMixin, DetailView):
 
 class GuitarraUpdate(LoginRequiredMixin, UpdateView):
     model = Instrumento
-    # fields = '__all__'
     form_class = ActualizacionInstrumento
-    #fields = ('titulo', 'instrumento', 'marca', 'modelo', 'descripcion', 'year', 'precio', 'telefonoContacto', 'emailContacto')
     success_url = reverse_lazy('guitarras')
     context_object_name = 'guitarra'
     template_name = 'Base/guitarraEdicion.html'
@@ -100,7 +106,6 @@ class BajoDetalle(LoginRequiredMixin,DetailView):
 class BajoUpdate(LoginRequiredMixin, UpdateView):
     model = Instrumento
     form_class = ActualizacionInstrumento
-    #fields = ('titulo', 'instrumento', 'marca', 'modelo', 'descripcion', 'year', 'precio', 'telefonoContacto', 'emailContacto')
     success_url = reverse_lazy('bajos')
     context_object_name = 'bajo'
     template_name = 'Base/bajoEdicion.html'
@@ -126,7 +131,6 @@ class PedalDetalle(LoginRequiredMixin, DetailView):
 class PedalUpdate(LoginRequiredMixin, UpdateView):
     model = Instrumento
     form_class = ActualizacionInstrumento
-    #fields = ('titulo', 'instrumento', 'marca', 'modelo', 'descripcion', 'year', 'precio', 'telefonoContacto', 'emailContacto')
     success_url = reverse_lazy('pedales')
     context_object_name = 'pedal'
     template_name = 'Base/pedalEdicion.html'
@@ -152,7 +156,6 @@ class AmplificadorDetalle(LoginRequiredMixin, DetailView):
 class AmplificadorUpdate(LoginRequiredMixin, UpdateView):
     model = Instrumento
     form_class = ActualizacionInstrumento
-    #fields = ('titulo', 'instrumento', 'marca', 'modelo', 'descripcion', 'year', 'precio', 'telefonoContacto', 'emailContacto')
     success_url = reverse_lazy('amplificadores')
     context_object_name = 'amplificador'
     template_name = 'Base/amplificadorEdicion.html'
@@ -178,7 +181,6 @@ class TecladoDetalle(LoginRequiredMixin, DetailView):
 class TecladoUpdate(LoginRequiredMixin, UpdateView):
     model = Instrumento
     form_class = ActualizacionInstrumento
-    #fields = ('titulo', 'instrumento', 'marca', 'modelo', 'descripcion', 'year', 'precio', 'telefonoContacto', 'emailContacto')
     success_url = reverse_lazy('teclados')
     context_object_name = 'teclado'
     template_name = 'Base/tecladoEdicion.html'
@@ -204,7 +206,6 @@ class BateriaDetalle(LoginRequiredMixin, DetailView):
 class BateriaUpdate(LoginRequiredMixin, UpdateView):
     model = Instrumento
     form_class = ActualizacionInstrumento
-    #fields = ('titulo', 'instrumento', 'marca', 'modelo', 'descripcion', 'year', 'precio', 'telefonoContacto', 'emailContacto')
     success_url = reverse_lazy('baterias')
     context_object_name = 'bateria'
     template_name = 'Base/bateriaEdicion.html'
@@ -231,7 +232,6 @@ class OtroDetalle(LoginRequiredMixin, DetailView):
 class OtroUpdate(LoginRequiredMixin, UpdateView):
     model = Instrumento
     form_class = ActualizacionInstrumento
-    #fields = ('titulo', 'instrumento', 'marca', 'modelo', 'descripcion', 'year', 'precio', 'telefonoContacto', 'emailContacto')
     success_url = reverse_lazy('otros')
     context_object_name = 'otro'
     template_name = 'Base/otroEdicion.html'
@@ -253,3 +253,11 @@ class InstrumentoCreacion(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(InstrumentoCreacion, self).form_valid(form)
+
+
+# ACERCA DE MI
+
+def about(request):
+    return render(request, 'base/acercaDeMi.html', {})
+
+

@@ -5,6 +5,9 @@
 <div class="container">
 
 <p><h4>{{teclado.titulo}}</h4></p>
+{% if teclado.imagenInstrumento %}
+    <p><img src="{{teclado.imagenInstrumento.url}}" alt=""></p>
+{% endif %}
 <p>Marca: {{teclado.marca}}</p>
 <p>Modelo: {{teclado.modelo}}</p>
 <p>Descripción: {{teclado.descripcion}}</p>

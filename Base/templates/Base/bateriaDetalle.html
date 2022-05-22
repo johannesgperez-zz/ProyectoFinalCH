@@ -6,6 +6,9 @@
 
 
 <p><h4>{{bateria.titulo}}</h4></p>
+{% if bateria.imagenInstrumento %}
+    <p><img src="{{bateria.imagenInstrumento.url}}" alt=""></p>
+{% endif %}
 <p>Marca: {{bateria.marca}}</p>
 <p>Modelo: {{bateria.modelo}}</p>
 <p>Descripción: {{bateria.descripcion}}</p>

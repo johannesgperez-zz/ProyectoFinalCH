@@ -5,6 +5,10 @@
 <div class="container">
 
 <p><h4>{{guitarra.titulo}}</h4></p>
+
+{% if guitarra.imagenInstrumento %}
+    <p><img src="{{guitarra.imagenInstrumento.url}}" alt=""></p>
+{% endif %}
 <p>Marca: {{guitarra.marca}}</p>
 <p>Modelo: {{guitarra.modelo}}</p>
 <p>Descripción: {{guitarra.descripcion}}</p>
