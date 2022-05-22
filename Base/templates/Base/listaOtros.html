@@ -15,8 +15,10 @@
 <ul>
     <li>{{otro.titulo}}</li>
     <a href="{% url 'otro' otro.id %}">Ver</a>
+    {% if user.id == otro.usuario.id %}
     <a href="{% url 'otro_editar' otro.id %}">Editar</a>
     <a href="{% url 'otro_eliminar' otro.id %}">Eliminar</a>
+    {% endif %}
 </ul>
 
 {% endfor %}

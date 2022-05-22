@@ -15,8 +15,10 @@
 <ul>
     <li>{{teclado.titulo}}</li>
     <a href="{% url 'teclado' teclado.id %}">Ver</a>
+    {% if user.id == teclado.usuario.id %}
     <a href="{% url 'teclado_editar' teclado.id %}">Editar</a>
     <a href="{% url 'teclado_eliminar' teclado.id %}">Eliminar</a>
+    {% endif %}
 </ul>
 
 {% endfor %}

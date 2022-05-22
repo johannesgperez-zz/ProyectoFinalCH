@@ -2,6 +2,8 @@ from django.contrib.auth.forms import UserChangeForm
 from django import forms
 from django.contrib.auth.models import User
 
+from Base.models import Instrumento
+
 class FormularioEdicion(UserChangeForm):
     password = None
     email = forms.EmailField(widget=forms.EmailInput)
@@ -12,3 +14,38 @@ class FormularioEdicion(UserChangeForm):
     class Meta:
         model = User
         fields = ('email', 'username', 'first_name', 'last_name')
+
+class FormularioNuevoInstrumento(forms.ModelForm):
+    class Meta:
+        model = Instrumento
+        fields = ('usuario', 'titulo', 'instrumento', 'marca', 'modelo', 'descripcion', 'year', 'precio', 'telefonoContacto', 'emailContacto')
+
+        widgets = {
+            'usuario': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id':'usuario_id', 'type':'hidden'}),
+            'titulo' : forms.TextInput(attrs={'class': 'form-control'}),
+            'instrumento' : forms.Select(attrs={'class': 'form-control'}),
+            'marca' : forms.TextInput(attrs={'class': 'form-control'}),
+            'modelo' : forms.TextInput(attrs={'class': 'form-control'}),
+            'descripcion' : forms.Textarea(attrs={'class': 'form-control'}),
+            'year' : forms.TextInput(attrs={'class': 'form-control'}),
+            'precio' : forms.TextInput(attrs={'class': 'form-control'}),
+            'telefonoContacto' : forms.TextInput(attrs={'class': 'form-control'}),
+            'emailContacto' : forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+class ActualizacionInstrumento(forms.ModelForm):
+    class Meta:
+        model = Instrumento
+        fields = ('titulo', 'instrumento', 'marca', 'modelo', 'descripcion', 'year', 'precio', 'telefonoContacto', 'emailContacto')
+
+        widgets = {
+            'titulo' : forms.TextInput(attrs={'class': 'form-control'}),
+            'instrumento' : forms.Select(attrs={'class': 'form-control'}),
+            'marca' : forms.TextInput(attrs={'class': 'form-control'}),
+            'modelo' : forms.TextInput(attrs={'class': 'form-control'}),
+            'descripcion' : forms.Textarea(attrs={'class': 'form-control'}),
+            'year' : forms.TextInput(attrs={'class': 'form-control'}),
+            'precio' : forms.TextInput(attrs={'class': 'form-control'}),
+            'telefonoContacto' : forms.TextInput(attrs={'class': 'form-control'}),
+            'emailContacto' : forms.TextInput(attrs={'class': 'form-control'}),
+        }

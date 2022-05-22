@@ -15,8 +15,10 @@
 <ul>
     <li>{{pedal.titulo}}</li>
     <a href="{% url 'pedal' pedal.id %}">Ver</a>
+    {% if user.id == pedal.usuario.id %}
     <a href="{% url 'pedal_editar' pedal.id %}">Editar</a>
     <a href="{% url 'pedal_eliminar' pedal.id %}">Eliminar</a>
+    {% endif %}
 </ul>
 
 {% endfor %}

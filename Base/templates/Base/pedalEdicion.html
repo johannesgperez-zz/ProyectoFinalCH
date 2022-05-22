@@ -1,6 +1,12 @@
 {% extends 'Base/home.html' %}
 
 {% block content %}
+{% if user.id == pedal.usuario.id %}
+<div class="container">
+
+    <h4>Editar Pedal</h4>
+    
+</div>
 
 <div class="container">
 
@@ -10,5 +16,9 @@
 </form>
 
 </div>
-
+{% else %}
+<div class="container">
+<h4>No tienes acceso a esta pagina!</h4>
+</div>
+{% endif %}
 {% endblock %}

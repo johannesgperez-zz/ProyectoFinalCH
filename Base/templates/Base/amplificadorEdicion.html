@@ -2,6 +2,13 @@
 
 {% block content %}
 
+{% if user.id == amplificador.usuario.id %}
+<div class="container">
+
+    <h4>Editar Amplificador</h4>
+    
+</div>
+
 <div class="container">
 
 <form method="post">{% csrf_token %}
@@ -10,5 +17,10 @@
 </form>
 
 </div>
+{% else %}
+<div class="container">
+<h4>No tienes acceso a esta pagina!</h4>
+</div>
+{% endif %}
 
 {% endblock %}

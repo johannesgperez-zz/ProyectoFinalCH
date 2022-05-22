@@ -1,6 +1,12 @@
 {% extends 'Base/home.html' %}
 
 {% block content %}
+{% if user.id == bateria.usuario.id %}
+<div class="container">
+
+    <h4>Editar Bateria</h4>
+    
+</div>
 
 <div class="container">
 
@@ -10,5 +16,10 @@
 </form>
 
 </div>
+{% else %}
+<div class="container">
+<h4>No tienes acceso a esta pagina!</h4>
+</div>
+{% endif %}
 
 {% endblock %}
